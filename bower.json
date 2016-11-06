@@ -1,0 +1,13 @@
+{
+  "name": "file-uploader",
+  "version": "1.0.0",
+  "authors": [
+    "rwbrown@roadrunner.com"
+  ],
+  "description": "Sample Spring Boot Project | File Uploader",
+  "dependencies": {
+    "angular": "1.5.8",
+    "bootstrap": "3.3.6",
+    "angular-environment": "1.0.4"
+  }
+}

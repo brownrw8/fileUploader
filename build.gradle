@@ -1,0 +1,78 @@
+
+buildscript {
+	ext {
+		springBootVersion = '1.4.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+buildscript {
+	repositories {
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+
+	dependencies {
+		classpath "com.moowork.gradle:gradle-node-plugin:0.13"
+	}
+}
+
+apply plugin: 'maven'
+apply plugin: 'com.moowork.node'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'fileUploader'
+	version = '1.0.0'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-devtools')
+	compile('org.springframework.boot:spring-boot-starter-jersey')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('joda-time:joda-time')
+	compile('org.jadira.usertype:usertype.core:5.0.0.GA')
+	compile('com.h2database:h2')
+	compile('com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.2.1')
+	compile('com.fasterxml.jackson.datatype:jackson-datatype-joda')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '3.1'
+}
+
+task installBower(type: NpmTask) {
+	args = ['install', 'bower']
+}
+
+task installGulp(type: NpmTask) {
+	args = ['install', 'gulp']
+}
+
+task bowerInstall(type:Exec){
+	commandLine './node_modules/bower/bin/bower', 'install'
+}
+
+bowerInstall.dependsOn 'npmInstall'
+
+task gulpBuild(type:Exec) {
+	workingDir '/'
+	commandLine './node_modules/gulp/bin/gulp', 'build'
+}

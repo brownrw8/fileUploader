@@ -1,0 +1,25 @@
+<nav class="navbar navbar-default navbar-inverse" class="container-fluid">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">File Uploader</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <h1>File Uploader</h1>
+    <div>
+        <p><em>Use this tool to upload files, then view a list of uploaded files.</em></p>
+        <p><em>Click button to change the view.</em></p>
+    </div>
+    <div>
+        <button class="btn btn-primary btn-block"
+                type="button"
+                ng-click="app.swapPanels()">Change View</button>
+    </div>
+    <div ng-show="app.display.panelOne">
+        <upload-form></upload-form>
+    </div>
+    <div ng-show="app.display.panelTwo">
+        <list></list>
+    </div>
+</div>
