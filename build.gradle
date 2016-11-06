@@ -23,8 +23,21 @@ buildscript {
 	}
 }
 
+buildscript {
+	repositories {
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+
+	dependencies {
+		classpath 'com.moowork.gradle:gradle-gulp-plugin:0.13'
+	}
+}
+
 apply plugin: 'maven'
 apply plugin: 'com.moowork.node'
+apply plugin: 'com.moowork.gulp'
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
@@ -58,21 +71,12 @@ task wrapper(type: Wrapper) {
 	gradleVersion = '3.1'
 }
 
-task installBower(type: NpmTask) {
-	args = ['install', 'bower']
-}
-
-task installGulp(type: NpmTask) {
-	args = ['install', 'gulp']
+task installBowerGlobal(type: NpmTask) {
+	args = ['install', '-g', 'bower']
 }
 
 task bowerInstall(type:Exec){
-	commandLine './node_modules/bower/bin/bower', 'install'
+	commandLine 'bower', 'install'
 }
 
 bowerInstall.dependsOn 'npmInstall'
-
-task gulpBuild(type:Exec) {
-	workingDir '/'
-	commandLine './node_modules/gulp/bin/gulp', 'build'
-}

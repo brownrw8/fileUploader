@@ -4,7 +4,6 @@ An application for uploading files with associated title, description, and date 
 Files are uploaded to existing directory specified by configuration
 **fileUploader.localUploadDirectory** in *application.properties*.
 
-
 ## Specifications
 
 Spring Boot with embedded Tomcat.  Angular 1.5 SPA front-end.  Embedded H2 database.
@@ -14,21 +13,26 @@ Spring Boot with embedded Tomcat.  Angular 1.5 SPA front-end.  Embedded H2 datab
 
 ## Setup
 First, make sure you have NPM installed.  Also, if you don't plan on using Gradle Wrapper, please install a recent
-version of Gradle.  I have included a Gradle task for installing bower and gulp (setup)
-1. Clone Project
-2. Clean and build
+version of Gradle.  I have included Gradle tasks for installing npm, bower and gulp.
+1. Clone Project, Checkout Master
+2. Setup Environment
+Install NPM and Bower
 ```
-./gradlew steuclean bootRepackage
+gradle npmInstall installBowerGlobal
 ```
-3. Run .jar
-
+3. Clean and build
 ```
-$ java -jar <jarfile>
+gradle clean bowerInstall gulp_build bootRepackage
+```
+4. Run .jar
+After starting the application, it should be visible on 127.0.0.1:8080
+```
+$ java -jar build/libs/fileUploader-1.0.0.jar
 ```
 
 ### Using Gradle Wrapper
 
-Substitute gradle command for gradlew script (.bat for Windows, .sh for Unix).  The correct version of Gradle will be downloaded for you.
+Substitute gradle command for gradlew script.  The correct version of Gradle will be downloaded for you.
 
 ## Contributing
 
