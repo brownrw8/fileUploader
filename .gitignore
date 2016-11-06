@@ -3,8 +3,8 @@
 !gradle/wrapper/gradle-wrapper.jar
 
 ### This App ###
-src/main/resources/static/
-!src/main/resources/static/.gitkeep
+src/main/resources/static/index.html
+src/main/resources/static/assets
 
 ### NPM/Bower ###
 bower_components
