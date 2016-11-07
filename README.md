@@ -34,6 +34,17 @@ $ java -jar build/libs/fileUploader-1.0.0.jar
 
 Substitute gradle command for gradlew script.  The correct version of Gradle will be downloaded for you.
 
+## Considerations
+### Design Restrictions & Future Enhancements
+* Currently there is no security, this could be easily solved by implementing authentication through Spring Security
+* Uploaded files are stored on the local filesystem); instead, files could be stored on a larger, remote file system
+* Database is in-memory and therefore not truly persistent; instead, the database could be on a remote server and persist
+between instances
+* Aggregated file capacity is limited to host server resources
+* Database capacity is limited to host server resources
+* Any user can see any other user's files.  This is not very practical and could be solved by implementing authorization
+through Spring Security
+
 ## Contributing
 
 1. Fork it
