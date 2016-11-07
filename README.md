@@ -1,6 +1,6 @@
 # File Uploader
 
-An application for uploading files with associated title, description, and date of upload.
+An application for uploading files with associated title, description, and create/upload date.
 Files are uploaded to existing directory specified by configuration
 **fileUploader.localUploadDirectory** in *application.properties*.
 
