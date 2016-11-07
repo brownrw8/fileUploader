@@ -12,23 +12,26 @@ Spring Boot with embedded Tomcat.  Angular 1.5 SPA front-end.  Embedded H2 datab
 * Local Upload Directory (**fileUploader.localUploadDirectory**)
 
 ## Setup
-First, make sure you have NPM installed.  Also, if you don't plan on using Gradle Wrapper, please install a recent
-version of Gradle.  I have included Gradle tasks for installing npm, bower and gulp.
-1. Clone Project, Checkout Master
-2. Setup Environment
-Install NPM and Bower
-```
-gradle npmInstall installBowerGlobal
-```
-3. Clean and build
-```
-gradle clean bowerInstall gulp_build bootRepackage
-```
+First, it's best to have a recent version of npm installed.  Also, if you don't plan on using Gradle Wrapper, please install a recent version of Gradle.  I have included Gradle tasks for installing npm, bower and gulp.
+
+### Steps
+1. Clone project, checkout 'master' branch
+2. Setup environment
+Install npm & bower
+    ```
+    $ gradle npmInstall installBowerGlobal 
+    ```
+
+3. Clean & build
+    ```
+    $ gradle clean bowerInstall gulp_build bootRepackage
+    ```
+
 4. Run .jar
-After starting the application, it should be visible on 127.0.0.1:8080
-```
-$ java -jar build/libs/fileUploader-1.0.0.jar
-```
+After starting the application, it should be visible on 127.0.0.1:8080 
+    ```
+    $ java -jar build/libs/fileUploader-1.0.0.jar
+    ```
 
 ### Using Gradle Wrapper
 
@@ -52,6 +55,10 @@ through Spring Security
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request
+
+
+
+
 
 
 
