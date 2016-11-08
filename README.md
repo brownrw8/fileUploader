@@ -33,6 +33,11 @@ After starting the application, it should be visible on 127.0.0.1:8080
     $ java -jar build/libs/fileUploader-1.0.0.jar
     ```
 
+### Test
+    ```
+    $ gradle test
+    ```
+
 ### Using Gradle Wrapper
 
 Substitute gradle command for gradlew script.  The correct version of Gradle will be downloaded for you.
