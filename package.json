@@ -33,5 +33,6 @@
     "merge-stream": "^1.0.0",
     "path": "^0.12.7",
     "run-sequence": "^1.2.2"
-  }
+  },
+  "scripts": {"test": "karma start karma.conf.js"}
 }
