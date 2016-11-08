@@ -1,0 +1,6 @@
+language: java
+install: npmInstall installBowerGlobal
+script: clean bowerInstall gulp_build bootRepackage
+jdk:
+  - oraclejdk8
+  - openjdk8
