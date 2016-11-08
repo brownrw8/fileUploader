@@ -4,7 +4,7 @@
         <p><em>View list of uploaded files.</em></p>
     </div>
     <div class="container">
-        <div ng-show="!!list.notify" class="alert alert-info">{{list.notify}}</div>
+        <div ng-show="!!list.notify" class="alert alert-{{list.notify.status}}">{{list.notify.message}}</div>
         <div class="col-sm-12">
             <div class="btn-group btn-group-justified" role="group" aria-label="...">
                 <div class="btn-group" role="group">

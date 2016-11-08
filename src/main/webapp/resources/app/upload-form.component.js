@@ -9,33 +9,41 @@
         vm.fileId = "file-upload-identifier";
 
         vm.file = {};
-        vm.notify = null;
+        vm.notify = {};
 
         vm.reset = function(){
             _reset();
         };
 
-        vm.save = function(){
+        vm.save = function(form){
             _clearNotify();
-            FileService.uploadFile(vm.fileId).then(function(response){
-                vm.file.name = response.safeFileName;
-                vm.file.originalName = response.originalFileName;
-                vm.file.mimeType = response.mimeType;
-                FileService.saveFileMetadata(vm.file).then(function(response) {
-                    _reset();
-                    vm.notify = "Saved successfully.";
+            if(form.$valid){
+                FileService.uploadFile(vm.fileId).then(function(response){
+                    vm.file.name = response.safeFileName;
+                    vm.file.originalName = response.originalFileName;
+                    vm.file.mimeType = response.mimeType;
+                    FileService.saveFileMetadata(vm.file).then(function(response) {
+                        _reset();
+                        vm.notify.message = "Success: File uploaded!";
+                        vm.notify.status = "success";
+                    })
+                    .catch(function(error){
+                        vm.notify.message = "Something went wrong: File metadata could not be saved!";
+                        vm.notify.status = "danger";
+                    });
                 })
                 .catch(function(error){
-                    vm.notify = "Something went wrong.";
+                    vm.notify.message = "Something went wrong: File could not be uploaded!";
+                    vm.notify.status = "danger";
                 });
-            })
-            .catch(function(error){
-                vm.notify = "Something went wrong.";
-            });
-        };
+            }else{
+                vm.notify.message = "Please fill out all required fields.";
+                vm.notify.status = "info";
+            }
+        }
 
         var _clearNotify = function(){
-            vm.notify = null;
+            vm.notify = {};
         };
 
         var _reset = function(){

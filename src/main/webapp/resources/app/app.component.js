@@ -7,13 +7,15 @@
         var vm = this;
 
         vm.display = {
-            panelOne: true,
-            panelTwo: false
+            uploadForm: {active: true, title: "Upload"},
+            list: {active: false, title: "List"}
         };
 
-        vm.swapPanels = function(){
-            vm.display.panelOne = vm.display.panelTwo;
-            vm.display.panelTwo = !vm.display.panelTwo;
+        vm.show = function(panel){
+            for(var i in vm.display){
+                vm.display[i].active = false;
+            }
+            vm.display[panel].active = true;
         };
 
     };

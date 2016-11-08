@@ -12,14 +12,25 @@
         <p><em>Click button to change the view.</em></p>
     </div>
     <div>
-        <button class="btn btn-primary btn-block"
-                type="button"
-                ng-click="app.swapPanels()">Change View</button>
+        <div class="col-sm-12">
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button class="btn btn-{{app.display.uploadForm.active ? 'primary':'default'}}"
+                            type="button"
+                            ng-click="app.show('uploadForm')">{{app.display.uploadForm.title}}</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button class="btn btn-{{app.display.list.active ? 'primary':'default'}}"
+                            type="button"
+                            ng-click="app.show('list')">{{app.display.list.title}}</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <div ng-show="app.display.panelOne">
+    <div ng-show="app.display.uploadForm.active">
         <upload-form></upload-form>
     </div>
-    <div ng-show="app.display.panelTwo">
+    <div ng-show="app.display.list.active">
         <list></list>
     </div>
 </div>

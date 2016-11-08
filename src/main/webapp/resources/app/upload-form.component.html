@@ -2,17 +2,18 @@
     <h3>File Upload</h3>
     <div>
         <p><em>Upload a file providing title and description.</em></p>
+        <p><em>All form fields are required.</em></p>
     </div>
     <div class="container">
-        <div ng-show="!!form.notify" class="alert alert-info">{{form.notify}}</div>
-        <form class="form form-horizontal">
+        <div ng-show="!!form.notify" class="alert alert-{{form.notify.status}}">{{form.notify.message}}</div>
+        <form name="uploadForm" ng-submit="form.save(uploadForm)" class="form form-horizontal">
             <div class="form-group col-sm-12">
                 <label class="control-label col-md-3">File</label>
                 <div class="col-md-9">
                     <input id="{{ form.fileId }}" type="file"
                            file-reader="form.upload"
                            placeholder="File"
-                           class="form-control">
+                           class="form-control" required>
                 </div>
             </div>
             <div class="form-group col-sm-12">
@@ -22,7 +23,7 @@
                            spellcheck="true"
                            ng-model="form.file.title"
                            placeholder="Title"
-                           class="form-control">
+                           class="form-control" required>
                 </div>
             </div>
             <div class="form-group col-sm-12">
@@ -32,7 +33,7 @@
                            spellcheck="true"
                            ng-model="form.file.description"
                            placeholder="Description"
-                           class="form-control">
+                           class="form-control" required>
                 </div>
             </div>
             <div class="form-group col-sm-12">
@@ -41,7 +42,7 @@
                         <button class="btn btn-warning" ng-click="form.reset()">Reset</button>
                     </div>
                     <div class="btn-group" role="group">
-                        <button class="btn btn-success" ng-click="form.save()">Upload</button>
+                        <button class="btn btn-success" type="submit">Upload</button>
                     </div>
                 </div>
             </div>
