@@ -85,7 +85,7 @@ public class FileService {
         try{
             localUploadLocation = new File(localUploadDirectory);
         } catch (NullPointerException e){
-            LOGGER.error("Could not secure tmp file location " + localUploadDirectory);
+            LOGGER.error("Could not secure the tmp file location " + localUploadDirectory);
             fileUploadDto.setValid(false);
         }
         if(fileUploadDto.getValid()){
@@ -110,7 +110,7 @@ public class FileService {
             try {
                 uploadFile.transferTo(safeDestination);
             } catch (IOException e) {
-                LOGGER.error("Could not copy to safe location " + fileUploadDto.toString());
+                LOGGER.error("Could not copy to safe location for " + fileUploadDto.toString());
                 fileUploadDto.setValid(false);
             }
         }

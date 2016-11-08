@@ -1,12 +1,12 @@
 # File Uploader
 
-An application for uploading files with associated title, description, and date of upload.
+An application for uploading files with associated title, description, and create/upload date.
 Files are uploaded to existing directory specified by configuration
 **fileUploader.localUploadDirectory** in *application.properties*.
 
 ## Specifications
 
-Spring Boot with embedded Tomcat.  Angular 1.5 SPA front-end.  Embedded H2 database.
+Spring Boot with embedded Tomcat.  Angular 1.5 SPA front-end.  H2 in-memory database.
 
 ### Configurable Properties
 * Local Upload Directory (**fileUploader.localUploadDirectory**)
@@ -48,8 +48,7 @@ Substitute gradle command for gradlew script.  The correct version of Gradle wil
 * Uploaded files are stored on the local filesystem); instead, files could be stored on a larger, remote file system
 * Database is in-memory and therefore not truly persistent; instead, the database could be on a remote server and persist
 between instances
-* Aggregated file capacity is limited to host server resources
-* Database capacity is limited to host server resources
+* Aggregate file capacity is limited to host server resources
 * Any user can see any other user's files.  This is not very practical and could be solved by implementing authorization
 through Spring Security
 
