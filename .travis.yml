@@ -1,3 +1,0 @@
-language: java
-install: ./gradlew installBowerGlobal
-script: ./gradlew clean bowerInstall gulp_build bootRepackage
