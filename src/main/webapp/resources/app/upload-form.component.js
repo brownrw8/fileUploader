@@ -3,13 +3,16 @@
 
     var module = angular.module("fileUploader");
 
-    var uploadFormController = function(FileService){
+    var uploadFormController = function($rootScope, FileService){
         var vm = this;
 
         vm.fileId = "file-upload-identifier";
 
         vm.file = {};
-        vm.notify = {};
+        vm.notify = {
+            message: "Use this page to upload new files.",
+            status: "info"
+        };
 
         vm.reset = function(){
             _reset();
@@ -24,6 +27,7 @@
                     vm.file.mimeType = response.mimeType;
                     FileService.saveFileMetadata(vm.file).then(function(response) {
                         _reset();
+                        _emitReload();
                         vm.notify.message = "Success: File uploaded!";
                         vm.notify.status = "success";
                     })
@@ -47,8 +51,13 @@
         };
 
         var _reset = function(){
+            _clearNotify();
             FileService.removeFile(vm.fileId);
             vm.file = {};
+        };
+
+        var _emitReload = function(){
+            $rootScope.$emit("Reload");
         };
 
     };
@@ -56,7 +65,7 @@
     module.component("uploadForm", {
             templateUrl: "app/upload-form.component.html",
             controllerAs: "form",
-            controller: ["FileService", uploadFormController]
+            controller: ["$rootScope", "FileService", uploadFormController]
     });
 
     module.directive("fileReader", [function () {
